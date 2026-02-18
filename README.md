@@ -164,3 +164,8 @@ For those interested in how it works under the hood:
 ## License
 
 This project is open-sourced under the MIT License.
+
+
+
+<img width="1919" height="1031" alt="Screenshot 2026-02-19 005108" src="https://github.com/user-attachments/assets/a1c15bc4-8600-41d2-bf2e-2ab5456f4446" />
+<img width="1919" height="1028" alt="Screenshot 2026-02-19 005134" src="https://github.com/user-attachments/assets/1a334d7b-6e27-489d-b347-ca4428d73de5" />
