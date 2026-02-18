@@ -1,59 +1,42 @@
-# FrontendAssignment
+# Angular Custom Chart Component
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.4.
+A reusable, dependency-free Angular chart component `<io-chart>` supporting Line, Column, and Pie charts using SVG.
+Built for the Frontend Intern Assignment.
 
-## Development server
+## Features
+- **Zero External Dependencies**: Pure Angular + SVG.
+- **Dynamic Chart Types**: Switches between Line, Column, and Pie based on configuration.
+- **Responsive**: Scales automatically to container width.
+- **Interactive**: Hover effects for better UX.
 
-To start a local development server, run:
+## Usage
 
-```bash
-ng serve
+```html
+<io-chart [chartOptions]="myOptions"></io-chart>
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```typescript
+const myOptions: ChartOptions = {
+  type: 'line', // or 'column', 'pie'
+  title: 'My Chart',
+  series: [
+    { name: 'Item A', value: 10, color: 'red' },
+    { name: 'Item B', value: 20, color: 'blue' }
+  ]
+};
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Running the Project
+
+To start a local development server:
 
 ```bash
-ng generate --help
+npm start
 ```
+Navigate to `http://localhost:4200/`.
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## Running Tests
 
 ```bash
 ng test
 ```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
