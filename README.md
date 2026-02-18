@@ -1,23 +1,25 @@
 # Angular Custom Chart Component
 
-A robust, dependency-free Angular chart component `<io-chart>` that renders **Line**, **Column**, and **Pie** charts using pure SVG. Built for the Frontend Intern Assignment.
+Welcome to the Faclon Frontend Assignment project.
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg) ![Angular](https://img.shields.io/badge/Angular-v17+-dd0031.svg)
+This repository features a custom, reusable Angular component (`<io-chart>`) designed to render Line, Column, and Pie charts. The core philosophy behind this project was to build a robust charting solution without relying on any external libraries like D3.js or Chart.js, demonstrating pure Angular capabilities and direct SVG manipulation.
 
-## 🚀 Features
+## Features
 
-- **Zero External Dependencies**: Implementation uses standard Angular and SVG APIs. No D3.js or Chart.js.
-- **Dynamic Rendering**: Switches between chart types instantly based on configuration.
-- **Responsive Design**: Uses SVG `viewBox` attribute to scale automatically to any container size.
+- **Zero External Dependencies**: The chart is built entirely with standard Angular and SVG APIs.
+- **Dynamic Chart Types**: You can switch between Line, Column, and Pie charts instantly just by changing the configuration object.
+- **Responsive Design**: The charts use the SVG `viewBox` attribute, allowing them to scale perfectly to any container size.
 - **Interactive Elements**:
-  - Hover effects on bars, slices, and points.
-  - Tooltips displaying name and value.
+  - Hover effects on bars, slices, and points to improve readability.
+  - Tooltips that display exact values when interacting with data points.
 - **Clean Architecture**:
-  - Strong typing with TypeScript interfaces.
-  - Isolated SCSS styling with encapsulation.
-  - Efficient ChangeDetection via `OnChanges`.
+  - Strict typing using TypeScript interfaces.
+  - Styles are encapsulated within the component using SCSS.
+  - Efficient change detection to ensure smooth performance.
 
-## 🛠️ Installation
+## Installation
+
+If you'd like to run this project locally, follow these steps:
 
 1. **Clone the repository**
    ```bash
@@ -34,11 +36,15 @@ A robust, dependency-free Angular chart component `<io-chart>` that renders **Li
    ```bash
    npm start
    ```
-   Navigate to `http://localhost:4200/`.
+   Once the server starts, navigate to `http://localhost:4200/` in your browser.
 
-## 📖 Usage
+## Usage Guide
 
-Import `ChartComponent` in your standalone component or module:
+To use the chart in your own Angular application, first import the `ChartComponent`.
+
+**1. Import the Component**
+
+In your standalone component or module:
 
 ```typescript
 import { ChartComponent } from './chart/chart.component';
@@ -51,7 +57,9 @@ import { ChartComponent } from './chart/chart.component';
 export class AppComponent { ... }
 ```
 
-Use the component in your template:
+**2. Add to Template**
+
+Place the component tag in your HTML and pass the configuration options:
 
 ```html
 <io-chart [chartOptions]="myChartOptions"></io-chart>
@@ -59,7 +67,7 @@ Use the component in your template:
 
 ### Configuration Object
 
-The component accepts a `ChartOptions` object:
+The component is controlled by a simple configuration object. Here is the TypeScript interface for reference:
 
 ```typescript
 export interface ChartOptions {
@@ -77,7 +85,10 @@ export interface ChartSeries {
 
 ### Examples
 
+Here are some examples of how to configure different chart types:
+
 **Line Chart**
+Used for showing trends over time, like monthly sales.
 ```typescript
 lineOptions: ChartOptions = {
   type: 'line',
@@ -90,6 +101,7 @@ lineOptions: ChartOptions = {
 ```
 
 **Column Chart**
+Great for comparing values across categories, like revenue by quarter.
 ```typescript
 columnOptions: ChartOptions = {
   type: 'column',
@@ -102,6 +114,7 @@ columnOptions: ChartOptions = {
 ```
 
 **Pie Chart**
+Ideal for showing proportional distribution, like market share.
 ```typescript
 pieOptions: ChartOptions = {
   type: 'pie',
@@ -113,38 +126,41 @@ pieOptions: ChartOptions = {
 };
 ```
 
-## 📂 Project Structure
+## Project Structure
+
+Here is a quick overview of the file structure to help you navigate the codebase:
 
 ```
 src/
 ├── app/
-│   ├── chart/               # Reusable Chart Component
-│   │   ├── chart.ts         # Component Logic (Maths & SVG path generation)
-│   │   ├── chart.html       # SVG Template & Directives
-│   │   ├── chart.scss       # Component Styling
-│   │   └── chart.interface.ts # TypeScript Interfaces
-│   └── app.component.ts     # Demo Usage
+│   ├── chart/               # The Reusable Chart Component
+│   │   ├── chart.ts         # Logic: Data processing and SVG math
+│   │   ├── chart.html       # View: SVG template and structural directives
+│   │   ├── chart.scss       # Styles: Component-specific styling
+│   │   └── chart.interface.ts # Types: TypeScript interfaces
+│   └── app.component.ts     # Demo: Shows how to use the component
 ```
 
-## 🧪 Running Tests
+## Running Tests
 
-Run unit tests to verify logic:
+This project includes unit tests to ensure the logic works as expected. You can run them with:
 
 ```bash
 npm test
 ```
 
-## 📐 Implementation Details
+## Implementation Details
 
-### Maths & Logic
-- **Column Chart**: Calculates bar height relative to the maximum data value.
-- **Line Chart**: Maps data points to X,Y coordinates and generates an SVG polyline string.
-- **Pie Chart**: Converts values to angles/radians and generates SVG Arc paths (`A` command).
+For those interested in how it works under the hood:
+
+- **Column Chart**: We calculate the height of each bar relative to the maximum data value in the series.
+- **Line Chart**: We map data points to X and Y coordinates within the SVG grid and generate a `polyline` string to connect them.
+- **Pie Chart**: This was the tricky part! We convert data values into angles (radians) and use the SVG Arc command (`A`) to draw each slice.
 
 ### Styling
-- **SCSS** is used for styling axes, labels, and legends.
-- **Animations** use CSS `@keyframes` for drawing lines and transitions for hover states.
+- We use **SCSS** for all styling needs, keeping the axes, labels, and legends looking sharp.
+- **Animations** are handled with CSS `@keyframes` to create a smooth drawing effect for the line chart and hover transitions for the bars and slices.
 
-## 📝 License
+## License
 
-This project is licensed under the MIT License.
+This project is open-sourced under the MIT License.
